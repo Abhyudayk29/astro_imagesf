@@ -9,7 +9,7 @@ class apod extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Astrongmy Picture of day"),
+          title: Text("Astronomy Picture of the day"),
         ),
         body:
         FutureBuilder(
@@ -18,15 +18,19 @@ class apod extends StatelessWidget {
               return Column(
                 children: [
                   Container(
-                    child: Text("${snapshot.data['title'].toString()}"),
+                    child: Text("${snapshot.data['title'].toString()}",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),),
                   ),
                   Container(
-                    height: 200,
-                    width: 200,
+                    height: 400,
+                    width:400,
                     child: Image.network("${snapshot.data['image'].toString()}"),
                   ),
                   Container(
-                    child: Text("${snapshot.data['explanation'].toString()}"),
+                    child: Text("${snapshot.data['explanation'].toString()}",
+                    style:TextStyle(fontStyle: FontStyle.italic)),
                   ),
                   Container(
                     child: Text("${snapshot.data['date'].toString()}"),
