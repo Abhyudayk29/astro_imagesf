@@ -1,3 +1,4 @@
+import 'package:Astro_ImagesF/apod.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,23 +31,24 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            "Astro Images",
+            "Astro Pic of the Day",
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.white10,
         ),
-        body: GridView.count(
-          primary: false,
-          padding: const EdgeInsets.all(20),
-          crossAxisSpacing: 0,
-          mainAxisSpacing: 0,
-          crossAxisCount: 2,
+        body: Center(
+
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
           children: <Widget>[
 
             ElevatedButton(
+
               child:
               Image.asset('assets/images/apod1.jpg',
+                height: 400,
+                width: 400,
 
                 fit: BoxFit.fill,
               ),
@@ -54,36 +56,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 backgroundColor: Color.fromARGB(255,25,25,112),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,MaterialPageRoute(builder: (BuildContext) {return apod();} ),);
+              },
             ),
 
 
-            ElevatedButton(
-              child:
-              new Image.asset("assets/images/epic1.jpg",
 
-                fit: BoxFit.fill,
-              ),
-              style:  ElevatedButton.styleFrom(
 
-                backgroundColor: Color.fromARGB(255,25,25,112),
-              ),
-              onPressed: () {},
-            ),
-            ElevatedButton(
-              child:
-              new Image.asset("assets/images/mr.jpg",
+          ],),
 
-                fit: BoxFit.fill,
-              ),
-              style:  ElevatedButton.styleFrom(
-
-                backgroundColor: Color.fromARGB(255,25,25,112),
-              ),
-              onPressed: () {},
-            ),
-
-          ],
         ));
   }
 }

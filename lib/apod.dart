@@ -8,28 +8,45 @@ class apod extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color.fromARGB(255, 25, 25, 112),
         appBar: AppBar(
-          title: Text("Astrongmy Picture of day"),
+          centerTitle: true,
+          title: Text(
+            "Astronomy Picture of the Day",
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Colors.white10,
         ),
-        body:
-        FutureBuilder(
+        body: FutureBuilder(
             future: apicall(),
             builder: (context, snapshot) {
               return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Container(
-                    child: Text("${snapshot.data['title'].toString()}"),
+                    child: Text(
+                      "${snapshot.data['title'].toString()}",
+                      style: TextStyle(color: Colors.lime, fontSize: 30),
+                    ),
                   ),
                   Container(
-                    height: 200,
-                    width: 200,
-                    child: Image.network("${snapshot.data['image'].toString()}"),
+                    height: 400,
+                    width: 400,
+                    child:
+                        Image.network("${snapshot.data['image'].toString()}"),
                   ),
                   Container(
-                    child: Text("${snapshot.data['explanation'].toString()}"),
+                    child: Text(
+                      "${snapshot.data['explanation'].toString()}",
+                      style: TextStyle(color: Colors.lime, fontSize: 18),
+                    ),
                   ),
                   Container(
-                    child: Text("${snapshot.data['date'].toString()}"),
+                    child: Text("${snapshot.data['date'].toString()}",
+                      style: TextStyle(
+                          color:Colors.lime,
+                          fontSize: 18
+                      ),),
                   )
                 ],
               );
@@ -47,7 +64,7 @@ Future apicall() async {
   final output = {
     'date': json['date'],
     'explanation': json['explanation'],
-    'title':json['title'],
+    'title': json['title'],
     'image': json['hdurl']
   };
   return output;
